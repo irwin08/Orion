@@ -30,7 +30,9 @@ namespace Orion
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            ScreenManager.AddScreen(new Screens.MainMenu(GraphicsDevice));
+
+            ScreenManager.GotoScreen("MainMenu");
 
             base.Initialize();
         }
@@ -44,7 +46,7 @@ namespace Orion
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            ScreenManager.Init();
         }
 
         /// <summary>
@@ -67,7 +69,7 @@ namespace Orion
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
-            // TODO: Add your update logic here
+            ScreenManager.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -80,7 +82,7 @@ namespace Orion
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            ScreenManager.Draw(gameTime);
 
             base.Draw(gameTime);
         }
