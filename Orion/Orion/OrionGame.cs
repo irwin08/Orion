@@ -11,9 +11,6 @@ using Microsoft.Xna.Framework.Media;
 
 namespace Orion
 {
-    /// <summary>
-    /// This is the main type for your game
-    /// </summary>
     public class OrionGame : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
