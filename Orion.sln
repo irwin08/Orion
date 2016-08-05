@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Orion", "Orion\Orion\Orion.csproj", "{13215CEB-D12D-4A75-8B08-7A8EF3BBF36C}"
+EndProject
+Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "OrionContent", "Orion\OrionContent\OrionContent.contentproj", "{671DBDA5-9185-4C70-8CFB-8FFABB26874E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{13215CEB-D12D-4A75-8B08-7A8EF3BBF36C}.Debug|x86.ActiveCfg = Debug|x86
+		{13215CEB-D12D-4A75-8B08-7A8EF3BBF36C}.Debug|x86.Build.0 = Debug|x86
+		{13215CEB-D12D-4A75-8B08-7A8EF3BBF36C}.Release|x86.ActiveCfg = Release|x86
+		{13215CEB-D12D-4A75-8B08-7A8EF3BBF36C}.Release|x86.Build.0 = Release|x86
+		{671DBDA5-9185-4C70-8CFB-8FFABB26874E}.Debug|x86.ActiveCfg = Debug|x86
+		{671DBDA5-9185-4C70-8CFB-8FFABB26874E}.Release|x86.ActiveCfg = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
