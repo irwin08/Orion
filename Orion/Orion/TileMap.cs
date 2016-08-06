@@ -2,15 +2,19 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
+using System.Xml.Serialization;
+using System.Xml;
 
 namespace Orion
 {
-    class MapRow
+    public class MapRow
     {
         public List<MapCell> Columns = new List<MapCell>();
     }
 
-    class TileMap
+    [Serializable]
+    public class TileMap
     {
         public List<MapRow> Rows = new List<MapRow>();
         public int MapWidth = 50;
@@ -23,7 +27,7 @@ namespace Orion
                 MapRow thisRow = new MapRow();
                 for (int x = 0; x < MapWidth; x++)
                 {
-                    thisRow.Columns.Add(new MapCell(0));
+                    thisRow.Columns.Add(new MapCell() { TileID = 0 });
                 }
                 Rows.Add(thisRow);
             }
@@ -70,7 +74,45 @@ namespace Orion
             Rows[5].Columns[6].TileID = 2;
             Rows[5].Columns[7].TileID = 2;
 
+            Rows[3].Columns[5].AddBaseTile(30);
+            Rows[4].Columns[5].AddBaseTile(27);
+            Rows[5].Columns[5].AddBaseTile(28);
+
+            Rows[3].Columns[6].AddBaseTile(25);
+            Rows[5].Columns[6].AddBaseTile(24);
+
+            Rows[3].Columns[7].AddBaseTile(31);
+            Rows[4].Columns[7].AddBaseTile(26);
+            Rows[5].Columns[7].AddBaseTile(29);
+
+            Rows[4].Columns[6].AddBaseTile(104);
+
             //END MAP
-        } 
+        }
+
+        public void Save(string path)
+        {
+            MemoryStream memoryStream = new MemoryStream();
+            XmlSerializer xs = new XmlSerializer(typeof(TileMap));
+            XmlTextWriter xmlTextWriter = new XmlTextWriter(memoryStream, Encoding.UTF8);
+
+            xs.Serialize(xmlTextWriter, this);
+            string XMLString = Encoding.UTF8.GetString(memoryStream.ToArray()).Substring(1);
+
+            File.WriteAllText(path, XMLString);
+        }
+
+        public static TileMap Load(string path)
+        {
+            string XMLString = File.ReadAllText(path);
+
+            XmlSerializer xs = new XmlSerializer(typeof(TileMap));
+            TileMap o;
+            using(Stream stream = new MemoryStream(Encoding.UTF8.GetBytes(XMLString)))
+            {
+                o = (TileMap)xs.Deserialize(stream);
+            }
+            return o;
+        }
     }
 }

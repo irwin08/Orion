@@ -11,10 +11,15 @@ namespace Orion
     static class Tile
     {
         static public Texture2D TileSetTexture;
+        static public int TileWidth = 48;
+        static public int TileHeight = 48;
 
         static public Rectangle GetSourceRectangle(int tileIndex)
         {
-            return new Rectangle(tileIndex * 32, 0, 32, 32);
+            int tileY = tileIndex / (TileSetTexture.Width / TileWidth);
+            int tileX = tileIndex % (TileSetTexture.Width / TileWidth);
+
+            return new Rectangle(tileX * TileWidth, tileY * TileHeight, TileWidth, TileHeight);
         }
     }
 }
