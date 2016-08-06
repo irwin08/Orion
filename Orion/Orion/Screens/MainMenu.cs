@@ -34,6 +34,11 @@ namespace Orion.Screens
 
         public override void Update(GameTime gameTime)
         {
+            if (Keyboard.GetState().IsKeyDown(Keys.M))
+            {
+                ScreenManager.GotoScreen("GameScreen");
+            }
+
             base.Update(gameTime);
         }
     }

@@ -31,6 +31,7 @@ namespace Orion
         protected override void Initialize()
         {
             ScreenManager.AddScreen(new Screens.MainMenu(GraphicsDevice));
+            ScreenManager.AddScreen(new Screens.GameScreen(GraphicsDevice, Content));
 
             ScreenManager.GotoScreen("MainMenu");
 
